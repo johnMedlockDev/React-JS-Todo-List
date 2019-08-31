@@ -1,8 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
+import Todos from "./components/Todos";
 import "./App.css";
 
-function App() {
-  return <div>App</div>;
+// Constructs JS components from the components folder
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Todos />
+      </div>
+    );
+  }
 }
 
 export default App;
