@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Todos from "./components/Todos";
+import Header from "./components/layout/Header";
 import "./App.css";
 
 // Constructs JS components from the components folder
@@ -35,7 +36,7 @@ class App extends Component {
       })
     });
   };
-
+  // del todo
   delTodo = id => {
     this.setState({
       todos: [...this.state.todos.filter(todo => todo.id !== id)]
@@ -44,6 +45,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header />
         {/* Todos Component -> import Todos from "./components/Todos" */}
         {/* Passed state to Todos in a prop */}
         <Todos
