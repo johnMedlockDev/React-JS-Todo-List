@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Todos from "./components/Todos";
 import Header from "./components/layout/Header";
+import AddTodo from "./components/AddTodo";
 import "./App.css";
 
 // Constructs JS components from the components folder
@@ -25,6 +26,7 @@ class App extends Component {
       }
     ]
   };
+
   // toggle complete
   markComplete = id => {
     this.setState({
@@ -36,23 +38,38 @@ class App extends Component {
       })
     });
   };
+
   // del todo
   delTodo = id => {
     this.setState({
       todos: [...this.state.todos.filter(todo => todo.id !== id)]
     });
   };
+
+  // Add Todo
+  AddTodo = title => {
+    const newTodo = {
+      id: 4,
+      title,
+      completed: false
+    };
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  };
+
   render() {
     return (
       <div>
-        <Header />
-        {/* Todos Component -> import Todos from "./components/Todos" */}
-        {/* Passed state to Todos in a prop */}
-        <Todos
-          todos={this.state.todos}
-          markComplete={this.markComplete}
-          delTodo={this.delTodo}
-        />
+        <div className="container">
+          <Header />
+          <AddTodo AddTodo={this.AddTodo} />
+          {/* Todos Component -> import Todos from "./components/Todos" */}
+          {/* Passed state to Todos in a prop */}
+          <Todos
+            todos={this.state.todos}
+            markComplete={this.markComplete}
+            delTodo={this.delTodo}
+          />
+        </div>
       </div>
     );
   }
