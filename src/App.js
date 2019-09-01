@@ -24,13 +24,24 @@ class App extends Component {
       }
     ]
   };
+  // toggle complete
+  markComplete = id => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    });
+  };
 
   render() {
     return (
       <div>
         {/* Todos Component -> import Todos from "./components/Todos" */}
         {/* Passed state to Todos in a prop */}
-        <Todos todos={this.state.todos} />
+        <Todos todos={this.state.todos} markComplete={this.markComplete} />
       </div>
     );
   }
