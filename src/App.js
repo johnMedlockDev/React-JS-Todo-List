@@ -36,12 +36,21 @@ class App extends Component {
     });
   };
 
+  delTodo = id => {
+    this.setState({
+      todos: [...this.state.todos.filter(todo => todo.id !== id)]
+    });
+  };
   render() {
     return (
       <div>
         {/* Todos Component -> import Todos from "./components/Todos" */}
         {/* Passed state to Todos in a prop */}
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+        <Todos
+          todos={this.state.todos}
+          markComplete={this.markComplete}
+          delTodo={this.delTodo}
+        />
       </div>
     );
   }
